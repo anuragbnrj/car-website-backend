@@ -153,6 +153,23 @@ public class CarControllerTest {
     }
 
     /**
+     * Tests the update operation of a single car by ID.
+     *
+     * @throws Exception if the update operation of a vehicle fails
+     */
+    @Test
+    public void updateCar() throws Exception {
+        Car car = getCar();
+        car.getDetails().setNumberOfDoors(5);
+        mvc.perform(
+                put(new URI("/cars/1"))
+                        .content(json.write(car).getJson())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    /**
      * Tests the deletion of a single car by ID.
      *
      * @throws Exception if the delete operation of a vehicle fails
