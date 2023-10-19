@@ -1,5 +1,6 @@
 package com.udacity.boogle.maps;
 
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Random;
@@ -16,7 +17,7 @@ class MockAddressRepository {
      */
     static Address getRandom() {
 
-        Random generator = new Random();
+        Random generator = new SecureRandom();
         int randomIndex = generator.nextInt(ADDRESSES.length);
 
         String address = ADDRESSES[randomIndex];
